@@ -1,46 +1,54 @@
+ion-toolbar {
+  --background: #ffffff;
+  padding-top: 4px;
+  padding-left: 10px;
+}
+
 .user-avatar {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
 }
 
 .greeting-small {
   font-size: 12px;
-  color: var(--ion-color-medium);
+  color: #8a8a8a;
   margin: 0;
 }
 
 .greeting-name {
-  font-size: 18px;
-  font-weight: 700;
-  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  margin: 2px 0 0 0;
   color: #473c33;
 }
 
 .bell-icon {
   font-size: 22px;
-  margin-right: 12px;
+  margin-right: 16px;
   color: #473c33;
 }
 
 .home-content {
   --background: #ffffff;
+  --padding-bottom: 90px;
 }
 
 .section {
-  padding: 12px 16px;
+  padding: 16px 16px 0 16px;
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
+  margin-bottom: 10px;
 }
 
 .section-title {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
   color: #473c33;
-  margin: 8px 0;
+  margin: 0 0 12px 0;
 }
 
 .add-link,
@@ -49,88 +57,172 @@
   border: none;
   color: #abc270;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 
 .campaign-card {
   background: #fec868;
-  border-radius: 16px;
-  padding: 16px;
+  border-radius: 20px;
+  padding: 18px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .campaign-text h4 {
-  margin: 0 0 4px 0;
-  font-size: 15px;
+  margin: 0 0 6px 0;
+  font-size: 16px;
   font-weight: 700;
   color: #473c33;
+  line-height: 1.3;
 }
 
 .campaign-text p {
-  margin: 0 0 8px 0;
-  font-size: 12px;
-  color: #473c33;
+  margin: 0 0 14px 0;
+  font-size: 13px;
+  color: #5c4f43;
 }
 
 .campaign-btn {
   --background: #473c33;
   --color: #ffffff;
-  --border-radius: 8px;
+  --border-radius: 10px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
   font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .campaign-icon {
-  font-size: 40px;
+  font-size: 36px;
   color: #473c33;
-  opacity: 0.6;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 10px;
 }
 
-.crianca-card,
-.vacina-card {
+.crianca-card {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: #fafafa;
-  border-radius: 12px;
-  padding: 10px 12px;
-  margin-bottom: 8px;
+  gap: 14px;
+  background: #fafaf8;
+  border-radius: 16px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
 }
 
-.crianca-info h4,
-.vacina-info h4 {
+.crianca-card ion-avatar {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.crianca-info {
+  flex: 1;
+}
+
+.crianca-info h4 {
   margin: 0;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   color: #473c33;
 }
 
-.crianca-info p,
-.vacina-info p {
-  margin: 0;
+.crianca-info p {
+  margin: 2px 0 0 0;
   font-size: 12px;
-  color: var(--ion-color-medium);
+  color: #9b9b9b;
+}
+
+ion-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
 }
 
 ion-badge.ok {
   --background: #abc270;
-  --color: #473c33;
+  background: #abc270;
+  color: #473c33;
 }
 
 ion-badge.pendencia {
   --background: #fda769;
-  --color: #473c33;
+  background: #fda769;
+  color: #473c33;
+}
+
+.vacina-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fafaf8;
+  border-radius: 16px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.vacina-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 24px;
+  background: #f3eadd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .vacina-icon {
-  font-size: 24px;
+  font-size: 20px;
+  font-weight: 800;
+  font-weight: 800;
   color: #abc270;
 }
 
-.prazo {
-  font-size: 12px;
-  font-weight: 600;
+.vacina-info {
+  flex: 1;
+}
+
+.vacina-info h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
   color: #473c33;
-  margin-left: auto;
+}
+
+.vacina-info p {
+  margin: 2px 0 0 0;
+  font-size: 12px;
+  color: #9b9b9b;
+}
+
+.prazo-wrapper {
+  text-align: right;
+}
+
+.prazo-destaque {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fda769;
+}
+
+.prazo-data {
+  display: block;
+  font-size: 11px;
+  color: #9b9b9b;
+}
+
+.fab-add ion-fab-button {
+  --background: #473c33;
+  --background-activated: #3a302a;
 }

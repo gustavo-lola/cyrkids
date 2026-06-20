@@ -9,9 +9,15 @@ import {
   IonIcon,
   IonLabel,
   IonToolbar,
+  IonFab,
+  IonFabButton,
 } from "@ionic/angular/standalone";
 import { addIcons } from "ionicons";
-import { medkitOutline, notificationsOutline } from "ionicons/icons";
+import {
+  medkitOutline,
+  notificationsOutline,
+  addOutline,
+} from "ionicons/icons";
 
 interface Kid {
   id: string;
@@ -45,12 +51,14 @@ interface NextVacine {
     IonIcon,
     IonButton,
     IonBadge,
+    IonFab,
+    IonFabButton,
   ],
 })
 export class HomePage implements OnInit {
   user = {
     name: "Maria",
-    avatar: "https://i.pravatar.cc/150?img=147",
+    avatar: "https://i.pravatar.cc/150?img=47",
   };
 
   kids: Kid[] = [
@@ -74,8 +82,8 @@ export class HomePage implements OnInit {
       id: "3",
       nome: "Kael",
       idade: "12 meses",
-      foto: "https://i.pravatar.cc/150?img=32",
-      statusLabel: "4 Pendência",
+      foto: "https://i.pravatar.cc/150?img=33",
+      statusLabel: "4 Pendências",
       statusTipo: "pendencia",
     },
   ];
@@ -103,8 +111,9 @@ export class HomePage implements OnInit {
       prazo: "Amanhã, 19 Jul",
     },
   ];
+
   constructor() {
-    addIcons({ notificationsOutline, medkitOutline });
+    addIcons({ notificationsOutline, medkitOutline, addOutline });
   }
 
   ngOnInit() {}

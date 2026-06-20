@@ -57,12 +57,21 @@
     </div>
 
     <div class="vacina-card" *ngFor="let vaccine of vaccines">
-      <ion-icon name="medkit-outline" class="vacina-icon"></ion-icon>
+      <div class="vacina-icon-wrapper">
+        <ion-icon name="medkit-outline" class="vacina-icon"></ion-icon>
+      </div>
       <div class="vacina-info">
         <h4>{{ vaccine.nome }}</h4>
         <p>{{ vaccine.criancaNome }} • {{ vaccine.doseLabel }}</p>
       </div>
-      <span class="prazo">{{ vaccine.prazo }}</span>
+      <div class="prazo-wrapper">
+        <span class="prazo-destaque">{{ vaccine.prazo }}</span>
+      </div>
     </div>
   </section>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="fab-add">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
