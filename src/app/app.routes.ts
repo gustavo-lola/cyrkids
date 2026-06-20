@@ -17,7 +17,7 @@ export const routes: Routes = [
           import("./pages/home/home.page").then((m) => m.HomePage),
       },
       {
-        path: "crianca-perfil",
+        path: "crianca-perfil/:id",
         loadComponent: () =>
           import("./pages/crianca-perfil/crianca-perfil.page").then(
             (m) => m.CriancaPerfilPage,

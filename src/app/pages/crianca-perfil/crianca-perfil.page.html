@@ -1,13 +1,110 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-title>crianca-perfil</ion-title>
+    <ion-icon
+      name="arrow-back-outline"
+      slot="start"
+      class="back-icon"
+      (click)="voltar()"
+    ></ion-icon>
+    <span class="header-title">{{ crianca?.nome }}</span>
+    <ion-icon
+      name="notifications-outline"
+      slot="end"
+      class="bell-icon"
+    ></ion-icon>
+    <ion-avatar slot="end" class="header-avatar" *ngIf="crianca">
+      <img [src]="crianca.foto" [alt]="crianca.nome" />
+    </ion-avatar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">crianca-perfil</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="perfil-content" *ngIf="crianca">
+  <div class="profile-card">
+    <ion-avatar class="profile-avatar">
+      <img [src]="crianca.foto" [alt]="crianca.nome" />
+    </ion-avatar>
+    <div class="profile-info">
+      <h2>{{ crianca.nome }}</h2>
+      <p>{{ crianca.idade }}</p>
+      <div class="progresso-row">
+        <span>Progresso Geral</span>
+        <span class="progresso-valor">{{ progresso }}%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="progresso"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <strong>{{ realizadas }}</strong>
+      <span>Realizadas</span>
+    </div>
+    <div class="stat-card">
+      <strong>{{ pendentes }}</strong>
+      <span>Pendente</span>
+    </div>
+    <div class="stat-card">
+      <strong>{{ atrasadas }}</strong>
+      <span>Atrasadas</span>
+    </div>
+  </div>
+
+  <div class="filtros-row">
+    <button
+      [class.ativo]="filtroAtivo === 'todas'"
+      (click)="setFiltro('todas')"
+    >
+      Todas
+    </button>
+    <button
+      [class.ativo]="filtroAtivo === 'realizadas'"
+      (click)="setFiltro('realizadas')"
+    >
+      Realizadas
+    </button>
+    <button
+      [class.ativo]="filtroAtivo === 'pendentes'"
+      (click)="setFiltro('pendentes')"
+    >
+      Pendentes
+    </button>
+  </div>
+
+  <div
+    class="vacina-timeline"
+    *ngFor="let vacina of vacinasFiltradas"
+    [class]="vacina.status"
+  >
+    <div class="vacina-card-perfil">
+      <div class="vacina-icon-wrap">
+        <ion-icon
+          [name]="vacina.status === 'realizada' ? 'checkmark-circle-outline' : 'time-outline'"
+        ></ion-icon>
+      </div>
+      <div class="vacina-detalhes">
+        <h4>{{ vacina.nome }} ({{ vacina.dose }})</h4>
+        <p>{{ vacina.descricao }}</p>
+        <span class="vacina-status-label" *ngIf="vacina.status === 'realizada'">
+          Realizada em {{ vacina.dataRealizacao }}
+        </span>
+        <span
+          class="vacina-status-label pendente"
+          *ngIf="vacina.status !== 'realizada'"
+        >
+          Pendente
+        </span>
+        <button class="agendar-btn" *ngIf="vacina.status === 'pendente'">
+          Agendar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="fab-add">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

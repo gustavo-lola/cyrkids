@@ -1,0 +1,196 @@
+ion-toolbar {
+  --background: #fff8ee;
+}
+
+.back-icon,
+.bell-icon {
+  font-size: 22px;
+  color: #473c33;
+  margin: 0 12px;
+}
+
+.header-title {
+  font-weight: 700;
+  color: #abc270;
+  font-size: 17px;
+}
+
+.header-avatar {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+
+.perfil-content {
+  --background: #fff8ee;
+  --padding-bottom: 90px;
+}
+
+.profile-card {
+  display: flex;
+  gap: 16px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 16px;
+  margin: 16px;
+}
+
+.profile-avatar {
+  width: 64px;
+  height: 64px;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #473c33;
+}
+
+.profile-info p {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #9b9b9b;
+}
+
+.progresso-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #473c33;
+  margin-bottom: 4px;
+}
+
+.progresso-valor {
+  color: #abc270;
+  font-weight: 700;
+}
+
+.progress-bar {
+  background: #f0ede8;
+  border-radius: 8px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: #abc270;
+  height: 100%;
+}
+
+.stats-row {
+  display: flex;
+  gap: 10px;
+  margin: 0 16px 16px 16px;
+}
+
+.stat-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px;
+  text-align: center;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 18px;
+  color: #473c33;
+}
+
+.stat-card span {
+  font-size: 11px;
+  color: #9b9b9b;
+}
+
+.filtros-row {
+  display: flex;
+  gap: 8px;
+  margin: 0 16px 16px 16px;
+}
+
+.filtros-row button {
+  border: none;
+  background: #fff;
+  color: #473c33;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+.filtros-row button.ativo {
+  background: #473c33;
+  color: #fff;
+}
+
+.vacina-card-perfil {
+  display: flex;
+  gap: 12px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px;
+  margin: 0 16px 12px 16px;
+  border-left: 4px solid #abc270;
+}
+
+.vacina-timeline.pendente .vacina-card-perfil {
+  border-left-color: #fda769;
+}
+
+.vacina-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f3eadd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vacina-detalhes {
+  flex: 1;
+}
+
+.vacina-detalhes h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #473c33;
+}
+
+.vacina-detalhes p {
+  margin: 2px 0 6px 0;
+  font-size: 12px;
+  color: #9b9b9b;
+}
+
+.vacina-status-label {
+  font-size: 11px;
+  color: #abc270;
+  font-weight: 600;
+}
+
+.vacina-status-label.pendente {
+  color: #fda769;
+}
+
+.agendar-btn {
+  display: block;
+  margin-top: 8px;
+  width: 100%;
+  background: #473c33;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.fab-add ion-fab-button {
+  --background: #473c33;
+}

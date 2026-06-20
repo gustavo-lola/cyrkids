@@ -1,5 +1,5 @@
 ion-toolbar {
-  --background: #fff8ee;
+  --background: #ffede4;
   padding-top: 4px;
   padding-left: 10px;
 }
@@ -30,7 +30,7 @@ ion-toolbar {
 }
 
 .home-content {
-  --background: #fff8ee;
+  --background: #ffede4;
   --padding-bottom: 90px;
 }
 
@@ -112,10 +112,16 @@ ion-toolbar {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: #ffff;
+  background: #ffffff;
   border-radius: 16px;
   padding: 12px 14px;
   margin-bottom: 10px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.crianca-card:hover {
+  background-color: #f0ede8;
 }
 
 .crianca-card ion-avatar {
