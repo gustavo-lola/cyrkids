@@ -17,10 +17,17 @@ export const routes: Routes = [
           import("./pages/home/home.page").then((m) => m.HomePage),
       },
       {
-        path: "crianca-perfil/:id",
+        path: "crianca-perfil",
         loadComponent: () =>
           import("./pages/crianca-perfil/crianca-perfil.page").then(
             (m) => m.CriancaPerfilPage,
+          ),
+      },
+      {
+        path: "crianca-perfil-detalhe/:id",
+        loadComponent: () =>
+          import("./pages/crianca-perfil-detalhe/crianca-perfil-detalhe.page").then(
+            (m) => m.CriancaPerfilDetalhePage,
           ),
       },
       {
@@ -50,12 +57,5 @@ export const routes: Routes = [
         pathMatch: "full",
       },
     ],
-  },
-  {
-    path: "historico-vacinal-detalhe",
-    loadComponent: () =>
-      import("./pages/historico-vacinal-detalhe/historico-vacinal-detalhe.page").then(
-        (m) => m.HistoricoVacinalDetalhePage,
-      ),
   },
 ];
