@@ -19,6 +19,7 @@ import {
   checkmarkCircleOutline,
   timeOutline,
   warningOutline,
+  calendarOutline,
 } from "ionicons/icons";
 import { CriancaService } from "../../services/crianca.service";
 import { Crianca } from "../../models/crianca.model";
@@ -58,6 +59,7 @@ export class CriancaPerfilPage implements OnInit {
       checkmarkCircleOutline,
       timeOutline,
       warningOutline,
+      calendarOutline,
     });
   }
 

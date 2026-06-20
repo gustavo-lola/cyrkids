@@ -37,18 +37,23 @@
   </div>
 
   <div class="stats-row">
-    <div class="stat-card">
+    <div class="stat-card card-realizadas">
       <strong>{{ realizadas }}</strong>
       <span>Realizadas</span>
     </div>
-    <div class="stat-card">
+    <div class="stat-card card-pendentes">
       <strong>{{ pendentes }}</strong>
       <span>Pendente</span>
     </div>
-    <div class="stat-card">
+    <div class="stat-card card-atrasadas">
       <strong>{{ atrasadas }}</strong>
       <span>Atrasadas</span>
     </div>
+  </div>
+
+  <div class="idade-container">
+    <ion-icon name="calendar-outline"></ion-icon>
+    <h2>{{crianca.idade}}</h2>
   </div>
 
   <div class="filtros-row">
@@ -93,7 +98,8 @@
           class="vacina-status-label pendente"
           *ngIf="vacina.status !== 'realizada'"
         >
-          <ion-icon name="time-outline"></ion-icon> Pendente
+          <ion-icon name="time-outline"></ion-icon> {{ vacina.status ===
+          'pendente' ? 'Pendente' : 'Atrasada' }}
         </span>
         <button class="agendar-btn" *ngIf="vacina.status === 'pendente'">
           Agendar
@@ -104,7 +110,7 @@
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="fab-add">
     <ion-fab-button>
-      <ion-icon name="add-outline"></ion-icon>
+      <ion-icon class="ion-icon" name="add-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
