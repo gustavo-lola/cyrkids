@@ -1,14 +1,12 @@
 ion-tab-bar {
   --background: #fff6ec;
   border-top: none;
-  border-radius: 24px;
-  margin: 0 12px 12px 12px;
+  border-radius: 24px 24px 0 0;
+  margin: 0;
   height: 70px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+  position: relative;
+  width: 100%;
 }
 
 ion-tab-button {
@@ -30,7 +28,7 @@ ion-tab-button {
 ion-tab-button.tab-selected {
   --background: #abc270;
   border-radius: 16px;
-  margin: 8px 4px;
+  margin: 8px 8px;
   height: calc(100% - 16px);
 }
 
