@@ -1,4 +1,4 @@
-export type StatusVacina = "realizada" | "pendente" | "atrasada";
+export type StatusVacina = "realizada" | "pendente" | "atrasada" | "bloqueada";
 
 export interface Vacina {
   id: string;
@@ -8,4 +8,5 @@ export interface Vacina {
   faixaEtaria: string;
   status: StatusVacina;
   dataRealizacao?: string;
+  local?: string;
 }

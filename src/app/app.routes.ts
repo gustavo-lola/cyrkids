@@ -24,10 +24,17 @@ export const routes: Routes = [
           ),
       },
       {
-        path: "historico-vacinal/:id",
+        path: "historico-vacinal",
         loadComponent: () =>
           import("./pages/historico-vacinal/historico-vacinal.page").then(
             (m) => m.HistoricoVacinalPage,
+          ),
+      },
+      {
+        path: "historico-vacinal-detalhe/:id",
+        loadComponent: () =>
+          import("./pages/historico-vacinal-detalhe/historico-vacinal-detalhe.page").then(
+            (m) => m.HistoricoVacinalDetalhePage,
           ),
       },
       {
@@ -43,5 +50,12 @@ export const routes: Routes = [
         pathMatch: "full",
       },
     ],
+  },
+  {
+    path: "historico-vacinal-detalhe",
+    loadComponent: () =>
+      import("./pages/historico-vacinal-detalhe/historico-vacinal-detalhe.page").then(
+        (m) => m.HistoricoVacinalDetalhePage,
+      ),
   },
 ];

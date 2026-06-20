@@ -1,0 +1,114 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon
+      name="arrow-back-outline"
+      slot="start"
+      class="back-icon"
+      (click)="voltar()"
+    ></ion-icon>
+    <span class="header-title">Histórico Vacinal</span>
+    <ion-icon
+      name="notifications-outline"
+      slot="end"
+      class="bell-icon"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="historico-content" *ngIf="crianca">
+  <div class="search-row">
+    <ion-searchbar
+      placeholder="Buscar vacina..."
+      [(ngModel)]="termoBusca"
+      class="custom-search"
+    ></ion-searchbar>
+    <button class="filter-btn">
+      <ion-icon name="options-outline"></ion-icon>
+    </button>
+  </div>
+
+  <div class="status-geral-card">
+    <span class="status-label">Status Geral</span>
+    <h2>{{ percentualCompleto }}% Completo</h2>
+    <div class="progress-bar">
+      <div class="progress-fill" [style.width.%]="percentualCompleto"></div>
+    </div>
+    <p class="proxima-dose" *ngIf="proximaVacina">
+      Próxima dose: {{ proximaVacina.nome }} ({{ proximaVacina.faixaEtaria }})
+    </p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item" *ngFor="let grupo of grupos; let last = last">
+      <div class="timeline-rail">
+        <div class="timeline-dot" [class]="statusGrupo(grupo)">
+          <ion-icon [name]="iconeGrupo(grupo)"></ion-icon>
+        </div>
+        <div class="timeline-line" *ngIf="!last"></div>
+      </div>
+
+      <div class="timeline-content">
+        <div class="grupo-header" (click)="toggleGrupo(grupo)">
+          <div class="grupo-info">
+            <h4>{{ grupo.faixa }}</h4>
+            <span [class.proximo-label]="statusGrupo(grupo) === 'proximo'">
+              {{ statusGrupo(grupo) === 'proximo' ? 'Próxima em 12 dias' :
+              contagemGrupo(grupo) }}
+            </span>
+          </div>
+          <ion-icon
+            [name]="grupo.expandido ? 'chevron-up-outline' : 'chevron-down-outline'"
+            class="chevron"
+          ></ion-icon>
+        </div>
+
+        <div class="grupo-vacinas" *ngIf="grupo.expandido">
+          <div
+            class="vacina-item"
+            *ngFor="let vacina of grupo.vacinas"
+            [class]="vacina.status"
+          >
+            <div class="vacina-icon-wrap" [class]="vacina.status">
+              <ion-icon
+                [name]="vacina.status === 'realizada' ? 'checkmark-circle-outline' : 'time-outline'"
+              ></ion-icon>
+            </div>
+            <div class="vacina-detalhes">
+              <div class="vacina-titulo-row">
+                <h4>{{ vacina.nome }}</h4>
+                <span class="status-tag" [class]="vacina.status">
+                  {{ vacina.status === 'realizada' ? 'APLICADA' : 'PENDENTE' }}
+                </span>
+              </div>
+              <p>{{ vacina.descricao }}</p>
+              <div class="meta-row" *ngIf="vacina.dataRealizacao">
+                <span class="meta-item">
+                  <ion-icon name="calendar-outline"></ion-icon>
+                  {{ vacina.dataRealizacao }}
+                </span>
+                <span class="meta-item" *ngIf="vacina.local">
+                  <ion-icon name="location-outline"></ion-icon>
+                  {{ vacina.local }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="documentos-section">
+    <h3 class="section-title">Documentos</h3>
+    <div class="documentos-row">
+      <div class="documento-card">
+        <ion-icon name="document-text-outline"></ion-icon>
+        <span>Certificado Digital</span>
+      </div>
+      <div class="documento-card">
+        <ion-icon name="cloud-upload-outline"></ion-icon>
+        <span>Anexar Físico</span>
+      </div>
+    </div>
+  </div>
+</ion-content>
