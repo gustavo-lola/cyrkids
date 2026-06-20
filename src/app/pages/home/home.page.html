@@ -1,17 +1,68 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-avatar slot="start">
-      <img alt="imagem de usuario" [src]="user.image" />
+    <ion-avatar slot="start" class="user-avatar">
+      <img [src]="user.avatar" alt="Foto do usuário" />
     </ion-avatar>
-    <ion-label>teste</ion-label>
+    <ion-label>
+      <p class="greeting-small">Bem-vinda,</p>
+      <h2 class="greeting-name">Olá, {{ user.name }}!</h2>
+    </ion-label>
+    <ion-icon
+      slot="end"
+      name="notifications-outline"
+      class="bell-icon"
+    ></ion-icon>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Bem Vindo(a)</ion-title>
-      <ion-label></ion-label>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="home-content">
+  <section class="section">
+    <h3 class="section-title">Campanhas Ativas</h3>
+    <div class="campaign-card">
+      <div class="campaign-text">
+        <h4>Campanha de Vacinação contra Gripe</h4>
+        <p>Proteja sua família nesta estação.</p>
+        <ion-button size="small" fill="solid" class="campaign-btn"
+          >Saiba mais</ion-button
+        >
+      </div>
+      <ion-icon name="medkit-outline" class="campaign-icon"></ion-icon>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h3 class="section-title">Meus Filhos</h3>
+      <button class="add-link">
+        <ion-icon name="add-outline"></ion-icon> Adicionar
+      </button>
+    </div>
+
+    <div class="crianca-card" *ngFor="let kid of kids">
+      <ion-avatar>
+        <img [src]="kid.foto" [alt]="kid.nome" />
+      </ion-avatar>
+      <div class="crianca-info">
+        <h4>{{ kid.nome }}</h4>
+        <p>{{ kid.idade }}</p>
+      </div>
+      <ion-badge [class]="kid.statusTipo"> {{ kid.statusLabel }} </ion-badge>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h3 class="section-title">Próximas Vacinas</h3>
+      <button class="see-all-link">Ver todas</button>
+    </div>
+
+    <div class="vacina-card" *ngFor="let vaccine of vaccines">
+      <ion-icon name="medkit-outline" class="vacina-icon"></ion-icon>
+      <div class="vacina-info">
+        <h4>{{ vaccine.nome }}</h4>
+        <p>{{ vaccine.criancaNome }} • {{ vaccine.doseLabel }}</p>
+      </div>
+      <span class="prazo">{{ vaccine.prazo }}</span>
+    </div>
+  </section>
 </ion-content>

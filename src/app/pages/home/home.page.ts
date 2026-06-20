@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
 import {
   IonAvatar,
   IonBadge,
@@ -9,16 +8,27 @@ import {
   IonHeader,
   IonIcon,
   IonLabel,
-  IonTitle,
   IonToolbar,
 } from "@ionic/angular/standalone";
 import { addIcons } from "ionicons";
-import {
-  bellOutline,
-  medkitOutline,
-  notificationsOutline,
-} from "ionicons/icons";
-import { NextObserver } from "rxjs";
+import { medkitOutline, notificationsOutline } from "ionicons/icons";
+
+interface Kid {
+  id: string;
+  nome: string;
+  idade: string;
+  foto: string;
+  statusLabel: string;
+  statusTipo: "ok" | "pendencia";
+}
+
+interface NextVacine {
+  id: string;
+  nome: string;
+  criancaNome: string;
+  doseLabel: string;
+  prazo: string;
+}
 
 @Component({
   selector: "app-home",
@@ -94,7 +104,7 @@ export class HomePage implements OnInit {
     },
   ];
   constructor() {
-    addIcons({ bellOutline, notificationsOutline, medkitOutline });
+    addIcons({ notificationsOutline, medkitOutline });
   }
 
   ngOnInit() {}
