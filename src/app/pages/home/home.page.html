@@ -44,7 +44,11 @@
       </button>
     </div>
 
-    <div class="crianca-card" *ngFor="let kid of kids">
+    <div
+      class="crianca-card"
+      *ngFor="let kid of kids"
+      (click)="irParaPerfil(kid.id)"
+    >
       <ion-avatar>
         <img [src]="kid.foto" [alt]="kid.nome" />
       </ion-avatar>

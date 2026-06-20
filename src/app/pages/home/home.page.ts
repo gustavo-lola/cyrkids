@@ -20,6 +20,7 @@ import {
   checkmarkCircleOutline,
   alertCircleOutline,
 } from "ionicons/icons";
+import { Router } from "@angular/router";
 
 interface Kid {
   id: string;
@@ -109,7 +110,7 @@ export class HomePage implements OnInit {
       id: "3",
       nome: "Kael",
       idade: "12 meses",
-      foto: "https://api.dicebear.com/7.x/big-smile/svg?seed=Kael&backgroundColor=FDA769",
+      foto: "https://api.dicebear.com/7.x/big-smile/svg?seed=Kalel&backgroundColor=FEC868",
       statusLabel: "4 Pendências",
       statusTipo: "pendencia",
     },
@@ -139,7 +140,7 @@ export class HomePage implements OnInit {
     },
   ];
 
-  constructor() {
+  constructor(private router: Router) {
     addIcons({
       notificationsOutline,
       medkitOutline,
@@ -147,6 +148,10 @@ export class HomePage implements OnInit {
       checkmarkCircleOutline,
       alertCircleOutline,
     });
+  }
+
+  irParaPerfil(id: string) {
+    this.router.navigate(["/tabs/crianca-perfil", id]);
   }
 
   ngOnInit() {}
