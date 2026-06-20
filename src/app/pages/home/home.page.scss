@@ -1,5 +1,5 @@
 ion-toolbar {
-  --background: #ffffff;
+  --background: #fff8ee;
   padding-top: 4px;
   padding-left: 10px;
 }
@@ -7,6 +7,7 @@ ion-toolbar {
 .user-avatar {
   width: 38px;
   height: 38px;
+  margin-right: 12px;
 }
 
 .greeting-small {
@@ -19,7 +20,7 @@ ion-toolbar {
   font-size: 22px;
   font-weight: 800;
   margin: 2px 0 0 0;
-  color: #473c33;
+  color: #abc270;
 }
 
 .bell-icon {
@@ -29,7 +30,7 @@ ion-toolbar {
 }
 
 .home-content {
-  --background: #ffffff;
+  --background: #fff8ee;
   --padding-bottom: 90px;
 }
 
@@ -57,7 +58,7 @@ ion-toolbar {
   border: none;
   color: #abc270;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 900;
   display: flex;
   align-items: center;
   gap: 2px;
@@ -111,15 +112,15 @@ ion-toolbar {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: #fafaf8;
+  background: #ffff;
   border-radius: 16px;
   padding: 12px 14px;
   margin-bottom: 10px;
 }
 
 .crianca-card ion-avatar {
-  width: 52px;
-  height: 52px;
+  width: 42px;
+  height: 42px;
   flex-shrink: 0;
 }
 
@@ -184,8 +185,13 @@ ion-badge.pendencia {
 .vacina-icon {
   font-size: 20px;
   font-weight: 800;
-  font-weight: 800;
   color: #abc270;
+}
+
+.vacina-button {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff8ee;
 }
 
 .vacina-info {
@@ -223,6 +229,36 @@ ion-badge.pendencia {
 }
 
 .fab-add ion-fab-button {
-  --background: #473c33;
+  --background: #abc270;
   --background-activated: #3a302a;
+}
+
+.campaign-carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.campaign-carousel .campaign-card {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+  min-height: 150px;
+}
+
+ion-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+}
+
+.badge-icon {
+  font-size: 14px;
 }

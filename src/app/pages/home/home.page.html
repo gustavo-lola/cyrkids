@@ -18,15 +18,21 @@
 <ion-content [fullscreen]="true" class="home-content">
   <section class="section">
     <h3 class="section-title">Campanhas Ativas</h3>
-    <div class="campaign-card">
-      <div class="campaign-text">
-        <h4>Campanha de Vacinação contra Gripe</h4>
-        <p>Proteja sua família nesta estação.</p>
-        <ion-button size="small" fill="solid" class="campaign-btn"
-          >Saiba mais</ion-button
-        >
+    <div class="campaign-carousel">
+      <div
+        class="campaign-card"
+        *ngFor="let campaign of campaigns"
+        [style.background]="campaign.bgColor"
+      >
+        <div class="campaign-text">
+          <h4>{{ campaign.titulo }}</h4>
+          <p>{{ campaign.descricao }}</p>
+          <ion-button size="small" fill="solid" class="campaign-btn"
+            >Saiba mais</ion-button
+          >
+        </div>
+        <ion-icon name="medkit-outline" class="campaign-icon"></ion-icon>
       </div>
-      <ion-icon name="medkit-outline" class="campaign-icon"></ion-icon>
     </div>
   </section>
 
@@ -46,7 +52,13 @@
         <h4>{{ kid.nome }}</h4>
         <p>{{ kid.idade }}</p>
       </div>
-      <ion-badge [class]="kid.statusTipo"> {{ kid.statusLabel }} </ion-badge>
+      <ion-badge [class]="kid.statusTipo">
+        <ion-icon
+          [name]="kid.statusTipo === 'ok' ? 'checkmark-circle-outline' : 'alert-circle-outline'"
+          class="badge-icon"
+        ></ion-icon>
+        {{ kid.statusLabel }}
+      </ion-badge>
     </div>
   </section>
 
@@ -71,7 +83,7 @@
   </section>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="fab-add">
     <ion-fab-button>
-      <ion-icon name="add-outline"></ion-icon>
+      <ion-icon name="medkit-outline" class="vacina-button"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>

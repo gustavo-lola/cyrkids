@@ -17,6 +17,8 @@ import {
   medkitOutline,
   notificationsOutline,
   addOutline,
+  checkmarkCircleOutline,
+  alertCircleOutline,
 } from "ionicons/icons";
 
 interface Kid {
@@ -34,6 +36,14 @@ interface NextVacine {
   criancaNome: string;
   doseLabel: string;
   prazo: string;
+}
+
+interface Campaign {
+  id: string;
+  titulo: string;
+  descricao: string;
+  imagem: string;
+  bgColor: string;
 }
 
 @Component({
@@ -61,12 +71,29 @@ export class HomePage implements OnInit {
     avatar: "https://i.pravatar.cc/150?img=47",
   };
 
+  campaigns: Campaign[] = [
+    {
+      id: "1",
+      titulo: "Campanha de Vacinação contra Gripe",
+      descricao: "Proteja sua família nesta estação.",
+      imagem: "assets/images/campaigns/vacina-gripe.png",
+      bgColor: "#FEC868",
+    },
+    {
+      id: "2",
+      titulo: "Multivacinação 2024",
+      descricao: "Atualize a caderneta de 0 a 15 anos.",
+      imagem: "assets/images/campaigns/bcg-vacine.png",
+      bgColor: "#ABC270",
+    },
+  ];
+
   kids: Kid[] = [
     {
       id: "1",
       nome: "Lucas",
       idade: "3 anos",
-      foto: "https://i.pravatar.cc/150?img=12",
+      foto: "https://api.dicebear.com/7.x/big-smile/svg?seed=Lucas&backgroundColor=ABC270",
       statusLabel: "Vacinas em dia",
       statusTipo: "ok",
     },
@@ -74,7 +101,7 @@ export class HomePage implements OnInit {
       id: "2",
       nome: "Beatriz",
       idade: "6 meses",
-      foto: "https://i.pravatar.cc/150?img=32",
+      foto: "https://api.dicebear.com/7.x/big-smile/svg?seed=Beatriz&backgroundColor=FEC868",
       statusLabel: "1 Pendência",
       statusTipo: "pendencia",
     },
@@ -82,7 +109,7 @@ export class HomePage implements OnInit {
       id: "3",
       nome: "Kael",
       idade: "12 meses",
-      foto: "https://i.pravatar.cc/150?img=33",
+      foto: "https://api.dicebear.com/7.x/big-smile/svg?seed=Kael&backgroundColor=FDA769",
       statusLabel: "4 Pendências",
       statusTipo: "pendencia",
     },
@@ -113,7 +140,13 @@ export class HomePage implements OnInit {
   ];
 
   constructor() {
-    addIcons({ notificationsOutline, medkitOutline, addOutline });
+    addIcons({
+      notificationsOutline,
+      medkitOutline,
+      addOutline,
+      checkmarkCircleOutline,
+      alertCircleOutline,
+    });
   }
 
   ngOnInit() {}
