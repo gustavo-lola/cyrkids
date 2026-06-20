@@ -176,6 +176,9 @@ ion-toolbar {
 
 .vacina-status-label.pendente {
   color: #fda769;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .agendar-btn {

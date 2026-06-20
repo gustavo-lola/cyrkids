@@ -80,7 +80,7 @@
     <div class="vacina-card-perfil">
       <div class="vacina-icon-wrap">
         <ion-icon
-          [name]="vacina.status === 'realizada' ? 'checkmark-circle-outline' : 'time-outline'"
+          [name]="vacina.status === 'realizada' ? 'checkmark-circle-outline' : 'warning-outline'"
         ></ion-icon>
       </div>
       <div class="vacina-detalhes">
@@ -93,7 +93,7 @@
           class="vacina-status-label pendente"
           *ngIf="vacina.status !== 'realizada'"
         >
-          Pendente
+          <ion-icon name="time-outline"></ion-icon> Pendente
         </span>
         <button class="agendar-btn" *ngIf="vacina.status === 'pendente'">
           Agendar

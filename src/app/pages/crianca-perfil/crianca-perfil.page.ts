@@ -18,6 +18,7 @@ import {
   ellipsisVertical,
   checkmarkCircleOutline,
   timeOutline,
+  warningOutline,
 } from "ionicons/icons";
 import { CriancaService } from "../../services/crianca.service";
 import { Crianca } from "../../models/crianca.model";
@@ -56,6 +57,7 @@ export class CriancaPerfilPage implements OnInit {
       ellipsisVertical,
       checkmarkCircleOutline,
       timeOutline,
+      warningOutline,
     });
   }
 
