@@ -1,0 +1,7 @@
+{
+  "name": "cyrkids",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
