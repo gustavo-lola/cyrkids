@@ -107,4 +107,10 @@ export class CriancaPerfilPage implements OnInit {
   voltar() {
     this.router.navigate(["/tabs/home"]);
   }
+
+  verHistorico() {
+    if (this.crianca) {
+      this.router.navigate(["/tabs/historico-vacinal", this.crianca.id]);
+    }
+  }
 }

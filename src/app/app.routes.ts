@@ -24,7 +24,7 @@ export const routes: Routes = [
           ),
       },
       {
-        path: "historico-vacinal",
+        path: "historico-vacinal/:id",
         loadComponent: () =>
           import("./pages/historico-vacinal/historico-vacinal.page").then(
             (m) => m.HistoricoVacinalPage,
