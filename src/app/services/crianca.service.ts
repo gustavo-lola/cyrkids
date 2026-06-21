@@ -6,6 +6,7 @@ import {
   doc,
   docData,
   setDoc,
+  addDoc,
 } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
 import { Crianca } from "../models/crianca.model";
@@ -22,6 +23,12 @@ export class CriancaService {
   getById(id: string): Observable<Crianca | undefined> {
     const ref = doc(this.firestore, "criancas", id);
     return docData(ref, { idField: "id" }) as Observable<Crianca | undefined>;
+  }
+
+  async add(crianca: Omit<Crianca, "id">): Promise<string> {
+    const ref = collection(this.firestore, "criancas");
+    const docRef = await addDoc(ref, crianca);
+    return docRef.id;
   }
 
   async seed(criancas: Crianca[]): Promise<void> {
