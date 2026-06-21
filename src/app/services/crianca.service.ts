@@ -47,7 +47,7 @@ export class CriancaService {
           dose: "3ª dose",
           faixaEtaria: "6 Meses",
           status: "bloqueada",
-          dataRealizacao: "15/06/2024",
+          dataRealizacao: "15/06/2026",
           local: "UBS Jardim das Flores",
         },
       ],

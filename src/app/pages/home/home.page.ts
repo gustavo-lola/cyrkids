@@ -82,7 +82,7 @@ export class HomePage implements OnInit {
     },
     {
       id: "2",
-      titulo: "Multivacinação 2024",
+      titulo: "Multivacinação 2026",
       descricao: "Atualize a caderneta de 0 a 15 anos.",
       imagem: "assets/images/campaigns/bcg-vacine.png",
       bgColor: "#ABC270",
@@ -103,7 +103,7 @@ export class HomePage implements OnInit {
       nome: "Beatriz",
       idade: "6 meses",
       foto: "https://api.dicebear.com/7.x/big-smile/svg?seed=Beatriz&backgroundColor=FEC868",
-      statusLabel: "1 Pendência",
+      statusLabel: "2 Pendência",
       statusTipo: "pendencia",
     },
     {

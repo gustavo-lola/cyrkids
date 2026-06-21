@@ -43,7 +43,7 @@ export class CampanhasPage implements OnInit {
   campanhasAtivas: Campanha[] = [
     {
       id: "1",
-      titulo: "Vacinação Multivacinação 2024",
+      titulo: "Vacinação Multivacinação 2026",
       descricao:
         "Campanha nacional para crianças e adolescentes de 0 a 15 anos. Atualize a caderneta!",
       bgColor: "#ABC270",
