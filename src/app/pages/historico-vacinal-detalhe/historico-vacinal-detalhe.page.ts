@@ -153,6 +153,10 @@ export class HistoricoVacinalDetalhePage implements OnInit {
   }
 
   voltar() {
-    this.router.navigate(["/tabs/historico-vacinal"]);
+    if (this.crianca) {
+      this.router.navigate(["/tabs/crianca-perfil-detalhe", this.crianca.id]);
+    } else {
+      this.router.navigate(["/tabs/crianca-perfil"]);
+    }
   }
 }
