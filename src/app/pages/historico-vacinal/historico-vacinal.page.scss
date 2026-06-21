@@ -1,0 +1,64 @@
+ion-toolbar {
+  --background: #fff8ee;
+}
+
+.header-title {
+  font-weight: 700;
+  color: #abc270;
+  font-size: 17px;
+  margin-left: 16px;
+}
+
+.bell-icon {
+  font-size: 22px;
+  color: #473c33;
+  margin: 0 12px;
+}
+
+.historico-content {
+  --background: #fff8ee;
+  --padding-bottom: 40px;
+}
+
+.selector-title {
+  margin: 20px 16px 10px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #473c33;
+}
+
+.seletor-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px;
+  margin: 0 16px 10px 16px;
+}
+
+.seletor-card ion-avatar {
+  width: 48px;
+  height: 48px;
+}
+
+.seletor-info {
+  flex: 1;
+}
+
+.seletor-info h4 {
+  margin: 0;
+  font-size: 15px;
+  color: #473c33;
+}
+
+.seletor-info p {
+  margin: 0;
+  font-size: 12px;
+  color: #9b9b9b;
+}
+
+.seletor-card ion-icon {
+  font-size: 18px;
+  color: #9b9b9b;
+}

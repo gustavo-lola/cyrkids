@@ -1,0 +1,313 @@
+ion-toolbar {
+  --background: #fff8ee;
+}
+
+.back-icon,
+.bell-icon {
+  font-size: 22px;
+  color: #473c33;
+  margin: 0 12px;
+}
+
+.header-title {
+  font-weight: 700;
+  color: #abc270;
+  font-size: 17px;
+}
+
+.historico-content {
+  --background: #fff8ee;
+  --padding-bottom: 40px;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px 0 16px;
+}
+
+.custom-search {
+  --background: #fcefe3;
+  --border-radius: 14px;
+  --box-shadow: none;
+  --placeholder-color: #b3a89c;
+  --color: #473c33;
+  padding: 0;
+}
+
+.filter-btn {
+  background: #fcefe3;
+  border: none;
+  border-radius: 14px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  ion-icon {
+    font-size: 18px;
+    color: #473c33;
+  }
+}
+
+.status-geral-card {
+  background: #abc270;
+  border-radius: 20px;
+  padding: 18px;
+  margin: 16px;
+  color: #473c33;
+}
+
+.status-label {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.status-geral-card h2 {
+  margin: 4px 0 10px 0;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.progress-bar {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  height: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  background: #473c33;
+  height: 100%;
+}
+
+.proxima-dose {
+  font-size: 12px;
+  margin: 0;
+}
+
+/* Timeline */
+.timeline {
+  margin: 0 16px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 12px;
+}
+
+.timeline-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 32px;
+  flex-shrink: 0;
+}
+
+.timeline-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 1;
+
+  ion-icon {
+    font-size: 18px;
+  }
+}
+
+.timeline-dot.completo {
+  background: #abc270;
+  color: #fff;
+}
+
+.timeline-dot.proximo {
+  background: #fda769;
+  color: #fff;
+}
+
+.timeline-dot.bloqueado {
+  background: #e8e2d8;
+  color: #b3a89c;
+}
+
+.timeline-line {
+  flex: 1;
+  width: 2px;
+  background: #e8e2d8;
+  margin: 2px 0;
+  min-height: 20px;
+}
+
+.timeline-content {
+  flex: 1;
+  padding-bottom: 14px;
+}
+
+.grupo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.grupo-info h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #473c33;
+}
+
+.grupo-info span {
+  font-size: 12px;
+  color: #9b9b9b;
+}
+
+.grupo-info span.proximo-label {
+  color: #fda769;
+  font-weight: 600;
+}
+
+.chevron {
+  font-size: 18px;
+  color: #9b9b9b;
+}
+
+.grupo-vacinas {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vacina-item {
+  display: flex;
+  gap: 12px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px;
+  border-left: 3px solid #abc270;
+}
+
+.vacina-item.pendente {
+  border-left-color: #fda769;
+}
+
+.vacina-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vacina-icon-wrap.realizada {
+  background: #e8f0da;
+  color: #abc270;
+}
+
+.vacina-icon-wrap.pendente {
+  background: #fce9dc;
+  color: #fda769;
+}
+
+.vacina-titulo-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vacina-titulo-row h4 {
+  margin: 0;
+  font-size: 13px;
+  color: #473c33;
+}
+
+.status-tag {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.status-tag.realizada {
+  background: #e8f0da;
+  color: #abc270;
+}
+
+.status-tag.pendente {
+  background: #fce9dc;
+  color: #fda769;
+}
+
+.vacina-detalhes p {
+  margin: 2px 0 6px 0;
+  font-size: 11px;
+  color: #9b9b9b;
+}
+
+.meta-row {
+  display: flex;
+  gap: 12px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #9b9b9b;
+
+  ion-icon {
+    font-size: 13px;
+  }
+}
+
+.documentos-section {
+  margin: 16px;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #473c33;
+  margin-bottom: 10px;
+}
+
+.documentos-row {
+  display: flex;
+  gap: 10px;
+}
+
+.documento-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.documento-card ion-icon {
+  font-size: 24px;
+  color: #abc270;
+}
+
+.documento-card span {
+  font-size: 11px;
+  color: #473c33;
+  font-weight: 600;
+}

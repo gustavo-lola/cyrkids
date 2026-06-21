@@ -151,7 +151,7 @@ export class HomePage implements OnInit {
   }
 
   irParaPerfil(id: string) {
-    this.router.navigate(["/tabs/crianca-perfil", id]);
+    this.router.navigate(["/tabs/crianca-perfil-detalhe", id]);
   }
 
   ngOnInit() {}
