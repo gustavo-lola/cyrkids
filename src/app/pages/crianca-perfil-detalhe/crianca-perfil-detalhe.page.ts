@@ -24,6 +24,7 @@ import {
 } from "ionicons/icons";
 import { CriancaService } from "../../services/crianca.service";
 import { Crianca } from "../../models/crianca.model";
+import { statusComputado } from "src/app/utils/vacina.utils";
 
 type Filtro = "todas" | "realizadas" | "pendentes";
 
@@ -74,20 +75,27 @@ export class CriancaPerfilDetalhePage implements OnInit {
 
   get realizadas() {
     return (
-      this.crianca?.vacinas.filter((v) => v.status === "realizada").length ?? 0
+      this.crianca?.vacinas.filter((v) => statusComputado(v) === "realizada")
+        .length ?? 0
     );
   }
 
   get pendentes() {
     return (
-      this.crianca?.vacinas.filter((v) => v.status === "pendente").length ?? 0
+      this.crianca?.vacinas.filter((v) => statusComputado(v) === "pendente")
+        .length ?? 0
     );
   }
 
   get atrasadas() {
     return (
-      this.crianca?.vacinas.filter((v) => v.status === "atrasada").length ?? 0
+      this.crianca?.vacinas.filter((v) => statusComputado(v) === "atrasada")
+        .length ?? 0
     );
+  }
+
+  statusVacina(vacina: any) {
+    return statusComputado(vacina);
   }
 
   get progresso(): number {

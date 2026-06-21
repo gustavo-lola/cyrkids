@@ -90,7 +90,7 @@
     <div class="vacina-card-perfil">
       <div class="vacina-icon-wrap">
         <ion-icon
-          [name]="vacina.status === 'realizada' ? 'checkmark-circle-outline' : 'warning-outline'"
+          [name]="statusVacina(vacina) === 'realizada' ? 'checkmark-circle-outline' : (statusVacina(vacina) === 'atrasada' ? 'alert-circle-outline' : 'time-outline')"
         ></ion-icon>
       </div>
       <div class="vacina-detalhes">

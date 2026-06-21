@@ -14,10 +14,15 @@ import {
   IonSelectOption,
   IonButton,
   IonAvatar,
+  IonRadioGroup,
+  IonRadio,
+  IonRow,
+  IonCol,
 } from "@ionic/angular/standalone";
 import { addIcons } from "ionicons";
 import { arrowBackOutline } from "ionicons/icons";
 import { CriancaService } from "../../services/crianca.service";
+import { Vacina } from "../../models/vacina.model";
 
 @Component({
   selector: "app-adicionar-crianca",
@@ -38,6 +43,10 @@ import { CriancaService } from "../../services/crianca.service";
     IonSelectOption,
     IonButton,
     IonAvatar,
+    IonRadioGroup,
+    IonRadio,
+    IonRow,
+    IonCol,
   ],
 })
 export class AdicionarCriancaPage {
@@ -45,6 +54,9 @@ export class AdicionarCriancaPage {
   quantidade: number | null = null;
   unidade: "meses" | "anos" = "meses";
   salvando = false;
+
+  // Atualizado para remover a opção 'nao_sei'
+  vacinasAoNascer: "sim" | "nao" | null = null;
 
   constructor(
     private router: Router,
@@ -60,8 +72,31 @@ export class AdicionarCriancaPage {
 
   get formValido(): boolean {
     return (
-      this.nome.trim().length > 0 && !!this.quantidade && this.quantidade > 0
+      this.nome.trim().length > 0 &&
+      !!this.quantidade &&
+      this.quantidade > 0 &&
+      this.vacinasAoNascer !== null
     );
+  }
+
+  gerarVacinasIniciais(): Vacina[] {
+    const statusInicial =
+      this.vacinasAoNascer === "sim" ? "realizada" : "pendente";
+
+    return [
+      {
+        id: "v1",
+        nome: "BCG",
+        faixaEtaria: "Ao Nascer",
+        status: statusInicial,
+      },
+      {
+        id: "v2",
+        nome: "Hepatite B",
+        faixaEtaria: "Ao Nascer",
+        status: statusInicial,
+      },
+    ] as Vacina[];
   }
 
   async salvar() {
@@ -69,12 +104,13 @@ export class AdicionarCriancaPage {
     this.salvando = true;
 
     const idade = `${this.quantidade} ${this.unidade}`;
+    const vacinasIniciais = this.gerarVacinasIniciais();
 
     await this.criancaService.add({
       nome: this.nome.trim(),
       idade,
       foto: this.fotoPreview,
-      vacinas: [],
+      vacinas: vacinasIniciais,
     });
 
     this.salvando = false;

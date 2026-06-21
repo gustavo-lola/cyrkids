@@ -8,5 +8,6 @@ export interface Vacina {
   faixaEtaria: string;
   status: StatusVacina;
   dataRealizacao?: string;
+  dataPrevista?: string;
   local?: string;
 }
