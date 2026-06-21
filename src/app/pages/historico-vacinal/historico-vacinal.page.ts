@@ -38,7 +38,9 @@ export class HistoricoVacinalPage implements OnInit {
   }
 
   ngOnInit() {
-    this.todasCriancas = this.criancaService.getAll();
+    this.criancaService.getAll().subscribe((criancas) => {
+      this.todasCriancas = criancas;
+    });
   }
 
   selecionarCrianca(id: string) {

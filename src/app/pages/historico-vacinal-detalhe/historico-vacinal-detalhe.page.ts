@@ -79,8 +79,10 @@ export class HistoricoVacinalDetalhePage implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get("id") ?? "";
-    this.crianca = this.criancaService.getById(id);
-    this.agruparPorFaixa();
+    this.criancaService.getById(id).subscribe((crianca) => {
+      this.crianca = crianca;
+      this.agruparPorFaixa();
+    });
   }
 
   agruparPorFaixa() {
