@@ -20,6 +20,7 @@ import {
   timeOutline,
   warningOutline,
   calendarOutline,
+  lockClosedOutline,
 } from "ionicons/icons";
 import { CriancaService } from "../../services/crianca.service";
 import { Crianca } from "../../models/crianca.model";
@@ -60,6 +61,7 @@ export class CriancaPerfilDetalhePage implements OnInit {
       timeOutline,
       warningOutline,
       calendarOutline,
+      lockClosedOutline,
     });
   }
 

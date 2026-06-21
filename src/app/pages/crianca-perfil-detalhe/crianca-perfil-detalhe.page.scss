@@ -261,3 +261,21 @@ ion-toolbar {
 .fab-add ion-icon {
   font-size: 24px;
 }
+
+.vacina-timeline.bloqueada .vacina-card-perfil {
+  border-left-color: transparent;
+  background: #ffffff;
+}
+
+.vacina-timeline.bloqueada .vacina-icon-wrap {
+  background: #f4f4f4;
+  color: #b0b0b0;
+}
+
+.vacina-timeline.bloqueada .vacina-detalhes h4 {
+  color: #555555;
+}
+
+.vacina-timeline.bloqueada .vacina-detalhes p {
+  color: #c0c0c0;
+}
