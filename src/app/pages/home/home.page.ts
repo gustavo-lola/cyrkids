@@ -21,6 +21,8 @@ import {
   alertCircleOutline,
 } from "ionicons/icons";
 import { Router } from "@angular/router";
+import { CriancaService } from "../../services/crianca.service";
+import { Crianca } from "../../models/crianca.model";
 
 interface Kid {
   id: string;
@@ -82,65 +84,20 @@ export class HomePage implements OnInit {
     },
     {
       id: "2",
-      titulo: "Multivacinação 2024",
+      titulo: "Multivacinação 2026",
       descricao: "Atualize a caderneta de 0 a 15 anos.",
       imagem: "assets/images/campaigns/bcg-vacine.png",
       bgColor: "#ABC270",
     },
   ];
 
-  kids: Kid[] = [
-    {
-      id: "1",
-      nome: "Lucas",
-      idade: "3 anos",
-      foto: "https://api.dicebear.com/7.x/big-smile/svg?seed=Lucas&backgroundColor=ABC270",
-      statusLabel: "Vacinas em dia",
-      statusTipo: "ok",
-    },
-    {
-      id: "2",
-      nome: "Beatriz",
-      idade: "6 meses",
-      foto: "https://api.dicebear.com/7.x/big-smile/svg?seed=Beatriz&backgroundColor=FEC868",
-      statusLabel: "1 Pendência",
-      statusTipo: "pendencia",
-    },
-    {
-      id: "3",
-      nome: "Kael",
-      idade: "12 meses",
-      foto: "https://api.dicebear.com/7.x/big-smile/svg?seed=Kalel&backgroundColor=FEC868",
-      statusLabel: "4 Pendências",
-      statusTipo: "pendencia",
-    },
-  ];
+  kids: Kid[] = [];
+  vaccines: NextVacine[] = [];
 
-  vaccines: NextVacine[] = [
-    {
-      id: "1",
-      nome: "BCG",
-      criancaNome: "Beatriz",
-      doseLabel: "Dose única",
-      prazo: "Amanhã, 15 Jul",
-    },
-    {
-      id: "2",
-      nome: "Pentavalente",
-      criancaNome: "Lucas",
-      doseLabel: "Reforço",
-      prazo: "Em 5 dias",
-    },
-    {
-      id: "3",
-      nome: "BCG",
-      criancaNome: "Kael",
-      doseLabel: "Dose única",
-      prazo: "Amanhã, 19 Jul",
-    },
-  ];
-
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private criancaService: CriancaService,
+  ) {
     addIcons({
       notificationsOutline,
       medkitOutline,
@@ -150,9 +107,50 @@ export class HomePage implements OnInit {
     });
   }
 
+  ngOnInit() {
+    this.criancaService.getAll().subscribe((criancas) => {
+      this.kids = this.montarKids(criancas);
+      this.vaccines = this.montarProximasVacinas(criancas);
+    });
+  }
+
+  private montarKids(criancas: Crianca[]): Kid[] {
+    return criancas.map((c) => {
+      const pendentes = c.vacinas.filter(
+        (v) => v.status !== "realizada",
+      ).length;
+      return {
+        id: c.id,
+        nome: c.nome,
+        idade: c.idade,
+        foto: c.foto,
+        statusLabel:
+          pendentes === 0
+            ? "Vacinas em dia"
+            : `${pendentes} Pendência${pendentes > 1 ? "s" : ""}`,
+        statusTipo: pendentes === 0 ? "ok" : "pendencia",
+      };
+    });
+  }
+
+  private montarProximasVacinas(criancas: Crianca[]): NextVacine[] {
+    const proximas: NextVacine[] = [];
+    for (const c of criancas) {
+      const pendente = c.vacinas.find((v) => v.status === "pendente");
+      if (pendente) {
+        proximas.push({
+          id: pendente.id,
+          nome: pendente.nome,
+          criancaNome: c.nome,
+          doseLabel: pendente.dose,
+          prazo: "Em breve",
+        });
+      }
+    }
+    return proximas;
+  }
+
   irParaPerfil(id: string) {
     this.router.navigate(["/tabs/crianca-perfil-detalhe", id]);
   }
-
-  ngOnInit() {}
 }

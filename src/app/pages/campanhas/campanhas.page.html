@@ -1,13 +1,89 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-title>campanhas</ion-title>
+    <ion-avatar slot="start" class="user-avatar">
+      <img [src]="user.avatar" [alt]="user.nome" />
+    </ion-avatar>
+    <span class="header-title">Fique Por Dentro!</span>
+    <ion-icon
+      name="notifications-outline"
+      slot="end"
+      class="bell-icon"
+    ></ion-icon>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">campanhas</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="campanhas-content">
+  <section class="section">
+    <h3 class="section-title">Campanhas Ativas</h3>
+    <p class="section-subtitle">Participe e mantenha a saúde em dia.</p>
+
+    <div class="campanha-carousel">
+      <div
+        class="campanha-card"
+        *ngFor="let campanha of campanhasAtivas"
+        [style.background]="campanha.bgColor"
+      >
+        <span class="periodo-tag" *ngIf="campanha.periodo">
+          <ion-icon name="calendar-outline"></ion-icon>
+          {{ campanha.periodo }}
+        </span>
+        <h4>{{ campanha.titulo }}</h4>
+        <p>{{ campanha.descricao }}</p>
+        <ion-button size="small" fill="solid" class="campanha-btn"
+          >Saiba mais</ion-button
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h3 class="section-title">Dicas de Saúde</h3>
+      <button class="see-all-link">Ver tudo</button>
+    </div>
+
+    <div class="dica-card" *ngFor="let dica of dicas">
+      <div class="dica-icon-wrap">
+        <ion-icon name="sunny-outline"></ion-icon>
+      </div>
+      <div class="dica-info">
+        <h4>{{ dica.titulo }}</h4>
+        <p>{{ dica.resumo }}</p>
+        <span class="ler-link"
+          >Ler artigo <ion-icon name="arrow-forward-outline"></ion-icon
+        ></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="quick-grid">
+      <div class="quick-card">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <h4>Calendário 2026</h4>
+        <p>Datas oficiais</p>
+      </div>
+      <div class="quick-card">
+        <ion-icon name="bulb-outline"></ion-icon>
+        <h4>Dicas Rápidas</h4>
+        <p>Cuidados diários</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title">Próximas Campanhas</h3>
+
+    <div class="proxima-campanha-card" *ngFor="let pc of proximasCampanhas">
+      <div class="data-badge">
+        <span class="mes">{{ pc.mes }}</span>
+        <span class="dia">{{ pc.dia }}</span>
+      </div>
+      <div class="pc-info">
+        <h4>{{ pc.titulo }}</h4>
+        <p>{{ pc.descricao }}</p>
+      </div>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </div>
+  </section>
 </ion-content>

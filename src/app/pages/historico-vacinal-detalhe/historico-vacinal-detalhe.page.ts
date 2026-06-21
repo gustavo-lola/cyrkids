@@ -79,8 +79,10 @@ export class HistoricoVacinalDetalhePage implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get("id") ?? "";
-    this.crianca = this.criancaService.getById(id);
-    this.agruparPorFaixa();
+    this.criancaService.getById(id).subscribe((crianca) => {
+      this.crianca = crianca;
+      this.agruparPorFaixa();
+    });
   }
 
   agruparPorFaixa() {
@@ -153,6 +155,10 @@ export class HistoricoVacinalDetalhePage implements OnInit {
   }
 
   voltar() {
-    this.router.navigate(["/tabs/historico-vacinal"]);
+    if (this.crianca) {
+      this.router.navigate(["/tabs/crianca-perfil-detalhe", this.crianca.id]);
+    } else {
+      this.router.navigate(["/tabs/crianca-perfil"]);
+    }
   }
 }

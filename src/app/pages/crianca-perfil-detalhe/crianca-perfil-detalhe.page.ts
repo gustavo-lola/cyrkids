@@ -67,7 +67,9 @@ export class CriancaPerfilDetalhePage implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get("id") ?? "1";
-    this.crianca = this.criancaService.getById(id);
+    this.criancaService.getById(id).subscribe((crianca) => {
+      this.crianca = crianca;
+    });
   }
 
   get realizadas() {

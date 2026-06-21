@@ -1,176 +1,33 @@
 import { Injectable } from "@angular/core";
+import {
+  Firestore,
+  collection,
+  collectionData,
+  doc,
+  docData,
+  setDoc,
+} from "@angular/fire/firestore";
+import { Observable } from "rxjs";
 import { Crianca } from "../models/crianca.model";
 
 @Injectable({ providedIn: "root" })
 export class CriancaService {
-  private criancas: Crianca[] = [
-    {
-      id: "1",
-      nome: "Lucas",
-      idade: "3 anos",
-      foto: "https://api.dicebear.com/7.x/big-smile/svg?seed=Lucas&backgroundColor=ABC270",
-      vacinas: [
-        {
-          id: "v1",
-          nome: "BCG",
-          descricao: "Previne formas graves de tuberculose.",
-          dose: "Dose única",
-          faixaEtaria: "Ao Nascer",
-          status: "realizada",
-          dataRealizacao: "12 Jan 2023",
-          local: "Hospital Materno",
-        },
-        {
-          id: "v2",
-          nome: "Hepatite B",
-          descricao: "Primeira dose ao nascimento.",
-          dose: "Dose única",
-          faixaEtaria: "Ao Nascer",
-          status: "realizada",
-          dataRealizacao: "12 Jan 2023",
-          local: "Hospital Materno",
-        },
-        {
-          id: "v3",
-          nome: "Pentavalente",
-          descricao: "Difteria, Tétano, Coqueluche, HepB, Hib",
-          dose: "1ª dose",
-          faixaEtaria: "2 Meses",
-          status: "realizada",
-          dataRealizacao: "12 Mar 2023",
-          local: "UBS Jardim das Flores",
-        },
-        {
-          id: "v4",
-          nome: "Pentavalente",
-          descricao: "Difteria, Tétano, Coqueluche, HepB, Hib",
-          dose: "3ª dose",
-          faixaEtaria: "6 Meses",
-          status: "bloqueada",
-          dataRealizacao: "15/06/2024",
-          local: "UBS Jardim das Flores",
-        },
-      ],
-    },
-    {
-      id: "2",
-      nome: "Beatriz",
-      idade: "6 meses",
-      foto: "https://api.dicebear.com/7.x/big-smile/svg?seed=Beatriz&backgroundColor=FEC868",
-      vacinas: [
-        {
-          id: "v5",
-          nome: "BCG",
-          descricao: "Previne formas graves de tuberculose.",
-          dose: "Dose única",
-          faixaEtaria: "Ao Nascer",
-          status: "realizada",
-          dataRealizacao: "12 Out 2023",
-          local: "Hospital Materno",
-        },
-        {
-          id: "v6",
-          nome: "Hepatite B",
-          descricao: "Primeira dose ao nascimento.",
-          dose: "Dose única",
-          faixaEtaria: "Ao Nascer",
-          status: "realizada",
-          dataRealizacao: "12 Out 2023",
-          local: "Hospital Materno",
-        },
-        {
-          id: "v7",
-          nome: "Pentavalente",
-          descricao: "Difteria, Tétano, Coqueluche, HepB, Hib",
-          dose: "1ª dose",
-          faixaEtaria: "2 Meses",
-          status: "realizada",
-          dataRealizacao: "12 Dez 2023",
-          local: "UBS Centro",
-        },
-        {
-          id: "v8",
-          nome: "Polio (VIP)",
-          descricao: "Paralisia Infantil",
-          dose: "1ª dose",
-          faixaEtaria: "2 Meses",
-          status: "realizada",
-          dataRealizacao: "12 Dez 2023",
-          local: "UBS Centro",
-        },
-        {
-          id: "v9",
-          nome: "Pentavalente",
-          descricao: "Difteria, Tétano, Coqueluche, HepB, Hib",
-          dose: "2ª dose",
-          faixaEtaria: "4 Meses",
-          status: "realizada",
-        },
-        {
-          id: "v10",
-          nome: "Polio (VIP)",
-          descricao: "Paralisia Infantil",
-          dose: "2ª dose",
-          faixaEtaria: "4 Meses",
-          status: "pendente",
-        },
-        {
-          id: "v11",
-          nome: "Pentavalente",
-          descricao: "Difteria, Tétano, Coqueluche, HepB, Hib",
-          dose: "3ª dose",
-          faixaEtaria: "6 Meses",
-          status: "pendente",
-        },
-      ],
-    },
-    {
-      id: "3",
-      nome: "Kael",
-      idade: "12 meses",
-      foto: "https://api.dicebear.com/7.x/big-smile/svg?seed=Kalel&backgroundColor=FEC868",
-      vacinas: [
-        {
-          id: "v12",
-          nome: "Hepatite B",
-          descricao: "Dose ao nascer",
-          dose: "Dose única",
-          faixaEtaria: "Ao Nascer",
-          status: "pendente",
-        },
-        {
-          id: "v13",
-          nome: "Difteria",
-          descricao: "Difteria, Tétano, Coqueluche",
-          dose: "1ª dose",
-          faixaEtaria: "2 Meses",
-          status: "pendente",
-        },
-        {
-          id: "v14",
-          nome: "Polio (VOP)",
-          descricao: "Paralisia Infantil",
-          dose: "1ª dose",
-          faixaEtaria: "2 Meses",
-          status: "pendente",
-        },
-        {
-          id: "v15",
-          nome: "Polio (VOP)",
-          descricao: "Paralisia Infantil",
-          dose: "2ª dose",
-          faixaEtaria: "4 Meses",
-          status: "pendente",
-        },
-      ],
-    },
-  ];
+  constructor(private firestore: Firestore) {}
 
-  getAll(): Crianca[] {
-    return this.criancas;
+  getAll(): Observable<Crianca[]> {
+    const ref = collection(this.firestore, "criancas");
+    return collectionData(ref, { idField: "id" }) as Observable<Crianca[]>;
   }
 
-  getById(id: string): Crianca | undefined {
-    return this.criancas.find((c) => c.id === id);
+  getById(id: string): Observable<Crianca | undefined> {
+    const ref = doc(this.firestore, "criancas", id);
+    return docData(ref, { idField: "id" }) as Observable<Crianca | undefined>;
+  }
+
+  async seed(criancas: Crianca[]): Promise<void> {
+    for (const c of criancas) {
+      const ref = doc(this.firestore, "criancas", c.id);
+      await setDoc(ref, c);
+    }
   }
 }
