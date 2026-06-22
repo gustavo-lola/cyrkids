@@ -1,13 +1,27 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-title>crianca-perfil</ion-title>
+    <span class="header-title">Meus Filhos</span>
+    <ion-icon
+      name="notifications-outline"
+      slot="end"
+      class="bell-icon"
+    ></ion-icon>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">crianca-perfil</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="historico-content">
+  <h3 class="section-title selector-title">Escolha uma criança</h3>
+  <div
+    class="seletor-card"
+    *ngFor="let c of todasCriancas"
+    (click)="selecionarCrianca(c.id)"
+  >
+    <ion-avatar>
+      <img [src]="c.foto" [alt]="c.nome" />
+    </ion-avatar>
+    <div class="seletor-info">
+      <h4>{{ c.nome }}</h4>
+      <p>{{ c.idade }}</p>
+    </div>
+    <ion-icon name="chevron-forward-outline"></ion-icon>
+  </div>
 </ion-content>

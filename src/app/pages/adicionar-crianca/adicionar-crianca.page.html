@@ -1,0 +1,81 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon
+      name="arrow-back-outline"
+      slot="start"
+      class="back-icon"
+      (click)="voltar()"
+    ></ion-icon>
+    <span class="header-title">Adicionar Criança</span>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="form-content">
+  <div class="avatar-preview">
+    <ion-avatar>
+      <img [src]="fotoPreview" alt="Pré-visualização" />
+    </ion-avatar>
+    <p>A foto é gerada automaticamente a partir do nome</p>
+  </div>
+
+  <div class="form-card">
+    <ion-item lines="none" class="form-item input-field">
+      <ion-label position="stacked">Nome da criança</ion-label>
+      <ion-input
+        [(ngModel)]="nome"
+        placeholder="Ex: Sofia"
+        type="text"
+      ></ion-input>
+    </ion-item>
+
+    <div class="idade-row">
+      <ion-item lines="none" class="form-item input-field idade-input">
+        <ion-label position="stacked">Idade</ion-label>
+        <ion-input
+          [(ngModel)]="quantidade"
+          placeholder="Ex: 6"
+          type="number"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="form-item input-field idade-select">
+        <ion-label position="stacked">Unidade</ion-label>
+        <ion-select [(ngModel)]="unidade" interface="popover">
+          <ion-select-option value="meses">Meses</ion-select-option>
+          <ion-select-option value="anos">Anos</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="historico-inicial">
+      <ion-label class="section-title">Histórico Inicial</ion-label>
+      <p class="section-desc">Tomou as vacinas ao nascer? (BCG e Hepatite B)</p>
+
+      <ion-radio-group [(ngModel)]="vacinasAoNascer">
+        <ion-row>
+          <ion-col size="6">
+            <ion-item lines="none" class="radio-item">
+              <ion-radio value="sim" labelPlacement="end">Sim</ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item lines="none" class="radio-item">
+              <ion-radio value="nao" labelPlacement="end">Não</ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-radio-group>
+    </div>
+
+    <ion-button
+      expand="block"
+      class="salvar-btn"
+      [disabled]="!formValido || salvando"
+      (click)="salvar()"
+    >
+      {{ salvando ? 'Salvando...' : 'Salvar Criança' }}
+    </ion-button>
+  </div>
+</ion-content>

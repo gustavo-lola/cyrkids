@@ -1,0 +1,373 @@
+ion-toolbar {
+  --background: #fff8ee;
+}
+
+.back-icon,
+.bell-icon {
+  font-size: 22px;
+  color: #473c33;
+  margin: 0 12px;
+}
+
+.header-title {
+  font-weight: 700;
+  color: #abc270;
+  font-size: 17px;
+}
+
+.header-avatar {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+
+.perfil-content {
+  --background: #fff8ee;
+  --padding-bottom: 90px;
+}
+
+.profile-card {
+  display: flex;
+  gap: 16px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 16px;
+  margin: 16px;
+}
+
+.profile-avatar {
+  width: 64px;
+  height: 64px;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #473c33;
+}
+
+.profile-info p {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #9b9b9b;
+}
+
+.progresso-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #473c33;
+  margin-bottom: 4px;
+}
+
+.progresso-valor {
+  color: #abc270;
+  font-weight: 700;
+}
+
+.progress-bar {
+  background: #f0ede8;
+  border-radius: 8px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: #abc270;
+  height: 100%;
+}
+
+.stats-row {
+  display: flex;
+  gap: 10px;
+  margin: 0 16px 16px 16px;
+}
+
+.stat-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.card-realizadas strong {
+  color: #abc270;
+}
+
+.card-pendentes strong {
+  color: #fda769;
+}
+
+.card-atrasadas strong {
+  color: #473c33;
+}
+
+.stat-card span {
+  font-size: 12px;
+  color: #473c33;
+  font-weight: 500;
+}
+
+.idade-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 16px 16px 16px;
+}
+
+.idade-container ion-icon {
+  font-size: 24px;
+  color: #5d6b41;
+}
+
+.idade-container h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.filtros-row {
+  display: flex;
+  gap: 8px;
+  margin: 0 16px 16px 16px;
+}
+
+.filtros-row button {
+  border: none;
+  background: #f7ede2;
+  color: #473c33;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 20px;
+}
+
+.filtros-row button.ativo {
+  background: #5d6b41;
+  color: #fff;
+}
+
+.vacina-card-perfil {
+  display: flex;
+  gap: 12px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px;
+  margin: 0 16px 12px 16px;
+  border-left: 4px solid transparent;
+}
+
+.vacina-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+.vacina-detalhes {
+  flex: 1;
+}
+
+.vacina-detalhes h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #473c33;
+}
+
+.vacina-detalhes p {
+  margin: 2px 0 6px 0;
+  font-size: 12px;
+  color: #9b9b9b;
+}
+
+.vacina-status-label {
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.vacina-timeline.realizada .vacina-card-perfil {
+  border-left-color: #abc270;
+}
+.vacina-timeline.realizada .vacina-icon-wrap {
+  background: rgba(171, 194, 112, 0.2);
+  color: #abc270;
+}
+.vacina-timeline.realizada .vacina-status-label {
+  color: #abc270;
+}
+
+.vacina-timeline.pendente .vacina-card-perfil {
+  border-left-color: #fda769;
+}
+.vacina-timeline.pendente .vacina-icon-wrap {
+  background: rgba(255, 82, 82, 0.15);
+  color: #fda769;
+}
+.vacina-timeline.pendente .vacina-status-label.pendente {
+  color: #fda769;
+}
+
+.vacina-timeline.atrasada .vacina-card-perfil {
+  border-left-color: #473c33;
+}
+.vacina-timeline.atrasada .vacina-icon-wrap {
+  background: rgba(71, 60, 51, 0.15);
+  color: #473c33;
+}
+.vacina-timeline.atrasada .vacina-status-label.pendente {
+  color: #473c33;
+}
+
+.agendar-btn {
+  display: block;
+  margin-top: 8px;
+  width: 100%;
+  background: #473c33;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.fab-add ion-fab-button {
+  --background: #473c33;
+  --color: #ffffff;
+  --box-shadow: 0 4px 12px rgba(71, 60, 51, 0.3);
+  width: 56px;
+  height: 56px;
+}
+
+.fab-add ion-icon {
+  font-size: 24px;
+}
+
+.vacina-timeline.bloqueada .vacina-card-perfil {
+  border-left-color: transparent;
+  background: #ffffff;
+}
+
+.vacina-timeline.bloqueada .vacina-icon-wrap {
+  background: #f4f4f4;
+  color: #b0b0b0;
+}
+
+.vacina-timeline.bloqueada .vacina-detalhes h4 {
+  color: #555555;
+}
+
+.vacina-timeline.bloqueada .vacina-detalhes p {
+  color: #c0c0c0;
+}
+
+.btn-historico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px;
+  background: #f7ede2;
+  color: #473c33;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  ion-icon {
+    font-size: 20px;
+  }
+
+  &:active {
+    background: #eddcc9;
+  }
+}
+
+ion-modal.agendamento-modal {
+  --border-radius: 24px 24px 0 0;
+  --background: #fff8ee;
+}
+
+.modal-header {
+  padding: 24px 20px 8px 20px;
+  background: #fff8ee;
+  text-align: center;
+
+  h3 {
+    margin: 0;
+    color: #473c33;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  p {
+    margin: 4px 0 0 0;
+    color: #abc270;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.modal-content {
+  --background: #fff8ee;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  padding-top: 16px;
+
+  .form-item {
+    --background: transparent;
+    margin-bottom: 12px;
+  }
+
+  ion-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #473c33;
+    margin-bottom: 6px;
+  }
+
+  .input-field {
+    --background: #fcfaf5;
+    --border-radius: 12px;
+    --color: #473c33;
+    --placeholder-color: #b3a89c;
+    color: #473c33;
+    border-radius: 12px;
+    border: 1px solid #f0ece1;
+    overflow: hidden;
+  }
+
+  .salvar-btn {
+    --background: #473c33;
+    --background-activated: #362d26;
+    --border-radius: 16px;
+    color: #ffffff;
+    margin-top: 16px;
+    margin-right: 4px;
+    font-weight: 700;
+    height: 48px;
+  }
+}

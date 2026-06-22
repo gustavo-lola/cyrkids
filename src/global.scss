@@ -34,4 +34,108 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.crianca-card,
+.vacina-card,
+.vacina-item,
+.vacina-card-perfil,
+.seletor-card,
+.grupo-faixa,
+.documento-card,
+.dica-card,
+.proxima-campanha-card,
+.quick-card,
+.stat-card {
+  animation: fadeInUp 0.4s ease-out backwards;
+}
+
+.crianca-card:nth-of-type(1),
+.vacina-card:nth-of-type(1),
+.seletor-card:nth-of-type(1),
+.vacina-item:nth-of-type(1) {
+  animation-delay: 0.05s;
+}
+
+.crianca-card:nth-of-type(2),
+.vacina-card:nth-of-type(2),
+.seletor-card:nth-of-type(2),
+.vacina-item:nth-of-type(2) {
+  animation-delay: 0.1s;
+}
+
+.crianca-card:nth-of-type(3),
+.vacina-card:nth-of-type(3),
+.seletor-card:nth-of-type(3),
+.vacina-item:nth-of-type(3) {
+  animation-delay: 0.15s;
+}
+
+.crianca-card:nth-of-type(4),
+.vacina-card:nth-of-type(4),
+.seletor-card:nth-of-type(4),
+.vacina-item:nth-of-type(4) {
+  animation-delay: 0.2s;
+}
+
+.crianca-card:nth-of-type(n + 5),
+.vacina-card:nth-of-type(n + 5),
+.seletor-card:nth-of-type(n + 5),
+.vacina-item:nth-of-type(n + 5) {
+  animation-delay: 0.25s;
+}
+
+.campaign-card,
+.status-geral-card,
+.profile-card {
+  animation: scaleIn 0.35s ease-out backwards;
+}
+
+.stats-row .stat-card:nth-of-type(1) {
+  animation-delay: 0.05s;
+}
+.stats-row .stat-card:nth-of-type(2) {
+  animation-delay: 0.1s;
+}
+.stats-row .stat-card:nth-of-type(3) {
+  animation-delay: 0.15s;
+}
+
+.fab-add ion-fab-button {
+  animation: scaleIn 0.4s ease-out 0.3s backwards;
+}
+
+ion-content {
+  animation: fadeIn 0.25s ease-out;
+}
