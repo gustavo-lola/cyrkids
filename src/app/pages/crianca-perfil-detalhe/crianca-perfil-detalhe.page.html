@@ -58,7 +58,7 @@
 
   <div class="idade-container">
     <ion-icon name="calendar-outline"></ion-icon>
-    <h2>{{crianca.idade}}</h2>
+    <h2>{{ crianca.idade }}</h2>
   </div>
 
   <div class="filtros-row">
@@ -85,29 +85,41 @@
   <div
     class="vacina-timeline"
     *ngFor="let vacina of vacinasFiltradas"
-    [class]="vacina.status"
+    [class]="statusVacina(vacina)"
   >
     <div class="vacina-card-perfil">
       <div class="vacina-icon-wrap">
         <ion-icon
-          [name]="vacina.status === 'realizada' ? 'checkmark-circle-outline' : 'warning-outline'"
+          [name]="statusVacina(vacina) === 'realizada' ? 'checkmark-circle-outline' : (statusVacina(vacina) === 'atrasada' ? 'alert-circle-outline' : 'time-outline')"
         ></ion-icon>
       </div>
       <div class="vacina-detalhes">
         <h4>{{ vacina.nome }} ({{ vacina.dose }})</h4>
         <p>{{ vacina.descricao }}</p>
-        <span class="vacina-status-label" *ngIf="vacina.status === 'realizada'">
+
+        <span
+          class="vacina-status-label"
+          *ngIf="statusVacina(vacina) === 'realizada'"
+        >
           Realizada em {{ vacina.dataRealizacao }}
+          <span *ngIf="vacina.local"> • {{ vacina.local }}</span>
         </span>
+
         <span
           class="vacina-status-label pendente"
-          *ngIf="vacina.status !== 'realizada'"
+          *ngIf="statusVacina(vacina) !== 'realizada'"
         >
-          <ion-icon name="time-outline"></ion-icon> {{ vacina.status ===
-          'pendente' ? 'Pendente' : 'Atrasada' }}
+          <ion-icon name="time-outline"></ion-icon>
+          {{ statusVacina(vacina) === 'pendente' ? 'Pendente' : 'Atrasada' }}
+          <span *ngIf="vacina.local"> • Agendada: {{ vacina.local }}</span>
         </span>
-        <button class="agendar-btn" *ngIf="vacina.status === 'pendente'">
-          Agendar
+
+        <button
+          class="agendar-btn"
+          *ngIf="statusVacina(vacina) !== 'realizada'"
+          (click)="agendarVacina(vacina)"
+        >
+          {{ vacina.local ? 'Reagendar' : 'Agendar' }}
         </button>
       </div>
     </div>
@@ -118,4 +130,43 @@
       <ion-icon class="ion-icon" name="add-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+  <ion-modal
+    [isOpen]="modalAgendamentoAberto"
+    (didDismiss)="fecharModal()"
+    [initialBreakpoint]="0.5"
+    [breakpoints]="[0, 0.5, 0.75]"
+  >
+    <ng-template>
+      <div class="modal-header">
+        <h3>Agendar Vacina</h3>
+        <p>{{ vacinaSelecionada?.nome }}</p>
+      </div>
+
+      <ion-content class="ion-padding modal-content">
+        <ion-item lines="none" class="form-item input-field">
+          <ion-label position="stacked">Dia do Agendamento</ion-label>
+          <ion-input type="date" [(ngModel)]="dataAgendamento"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="form-item input-field">
+          <ion-label position="stacked">Local de Vacinação</ion-label>
+          <ion-input
+            type="text"
+            placeholder="Ex: Posto de Saúde Central"
+            [(ngModel)]="localAgendamento"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button
+          expand="block"
+          class="salvar-btn"
+          (click)="salvarAgendamento()"
+          [disabled]="!dataAgendamento || !localAgendamento"
+        >
+          Confirmar Agendamento
+        </ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

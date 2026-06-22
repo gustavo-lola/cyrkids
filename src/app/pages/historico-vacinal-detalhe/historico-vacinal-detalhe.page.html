@@ -66,23 +66,28 @@
           <div
             class="vacina-item"
             *ngFor="let vacina of grupo.vacinas"
-            [class]="vacina.status"
+            [class]="statusVacina(vacina)"
           >
-            <div class="vacina-icon-wrap" [class]="vacina.status">
+            <div class="vacina-icon-wrap" [class]="statusVacina(vacina)">
               <ion-icon
-                [name]="vacina.status === 'realizada' ? 'checkmark-circle-outline' : 'time-outline'"
+                [name]="statusVacina(vacina) === 'realizada' ? 'checkmark-circle-outline' : (statusVacina(vacina) === 'atrasada' ? 'alert-circle-outline' : 'time-outline')"
               ></ion-icon>
             </div>
             <div class="vacina-detalhes">
               <div class="vacina-titulo-row">
                 <h4>{{ vacina.nome }}</h4>
-                <span class="status-tag" [class]="vacina.status">
-                  {{ vacina.status === 'realizada' ? 'APLICADA' : 'PENDENTE' }}
+                <span class="status-tag" [class]="statusVacina(vacina)">
+                  {{ statusVacina(vacina) === 'realizada' ? 'APLICADA' :
+                  (statusVacina(vacina) === 'atrasada' ? 'ATRASADA' :
+                  'PENDENTE') }}
                 </span>
               </div>
               <p>{{ vacina.descricao }}</p>
-              <div class="meta-row" *ngIf="vacina.dataRealizacao">
-                <span class="meta-item">
+              <div
+                class="meta-row"
+                *ngIf="vacina.dataRealizacao || vacina.local"
+              >
+                <span class="meta-item" *ngIf="vacina.dataRealizacao">
                   <ion-icon name="calendar-outline"></ion-icon>
                   {{ vacina.dataRealizacao }}
                 </span>

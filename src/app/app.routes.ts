@@ -52,6 +52,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: "adicionar-crianca",
+        loadComponent: () =>
+          import("./pages/adicionar-crianca/adicionar-crianca.page").then(
+            (m) => m.AdicionarCriancaPage,
+          ),
+      },
+      {
         path: "",
         redirectTo: "home",
         pathMatch: "full",

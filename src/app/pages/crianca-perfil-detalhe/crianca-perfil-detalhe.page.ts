@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import {
   IonContent,
@@ -9,6 +10,11 @@ import {
   IonAvatar,
   IonFab,
   IonFabButton,
+  IonModal,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonButton,
 } from "@ionic/angular/standalone";
 import { addIcons } from "ionicons";
 import {
@@ -21,9 +27,12 @@ import {
   warningOutline,
   calendarOutline,
   lockClosedOutline,
+  alertCircleOutline,
 } from "ionicons/icons";
 import { CriancaService } from "../../services/crianca.service";
 import { Crianca } from "../../models/crianca.model";
+import { Vacina } from "../../models/vacina.model";
+import { statusComputado } from "../../utils/vacina.utils";
 
 type Filtro = "todas" | "realizadas" | "pendentes";
 
@@ -34,6 +43,7 @@ type Filtro = "todas" | "realizadas" | "pendentes";
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     IonContent,
     IonHeader,
     IonToolbar,
@@ -41,11 +51,21 @@ type Filtro = "todas" | "realizadas" | "pendentes";
     IonAvatar,
     IonFab,
     IonFabButton,
+    IonModal,
+    IonItem,
+    IonLabel,
+    IonInput,
+    IonButton,
   ],
 })
 export class CriancaPerfilDetalhePage implements OnInit {
   crianca?: Crianca;
   filtroAtivo: Filtro = "todas";
+
+  modalAgendamentoAberto = false;
+  vacinaSelecionada?: Vacina;
+  dataAgendamento = "";
+  localAgendamento = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -62,6 +82,7 @@ export class CriancaPerfilDetalhePage implements OnInit {
       warningOutline,
       calendarOutline,
       lockClosedOutline,
+      alertCircleOutline,
     });
   }
 
@@ -74,20 +95,27 @@ export class CriancaPerfilDetalhePage implements OnInit {
 
   get realizadas() {
     return (
-      this.crianca?.vacinas.filter((v) => v.status === "realizada").length ?? 0
+      this.crianca?.vacinas.filter((v) => statusComputado(v) === "realizada")
+        .length ?? 0
     );
   }
 
   get pendentes() {
     return (
-      this.crianca?.vacinas.filter((v) => v.status === "pendente").length ?? 0
+      this.crianca?.vacinas.filter((v) => statusComputado(v) === "pendente")
+        .length ?? 0
     );
   }
 
   get atrasadas() {
     return (
-      this.crianca?.vacinas.filter((v) => v.status === "atrasada").length ?? 0
+      this.crianca?.vacinas.filter((v) => statusComputado(v) === "atrasada")
+        .length ?? 0
     );
+  }
+
+  statusVacina(vacina: Vacina) {
+    return statusComputado(vacina);
   }
 
   get progresso(): number {
@@ -98,9 +126,13 @@ export class CriancaPerfilDetalhePage implements OnInit {
   get vacinasFiltradas() {
     if (!this.crianca) return [];
     if (this.filtroAtivo === "realizadas")
-      return this.crianca.vacinas.filter((v) => v.status === "realizada");
+      return this.crianca.vacinas.filter(
+        (v) => statusComputado(v) === "realizada",
+      );
     if (this.filtroAtivo === "pendentes")
-      return this.crianca.vacinas.filter((v) => v.status !== "realizada");
+      return this.crianca.vacinas.filter(
+        (v) => statusComputado(v) !== "realizada",
+      );
     return this.crianca.vacinas;
   }
 
@@ -119,5 +151,34 @@ export class CriancaPerfilDetalhePage implements OnInit {
 
   voltar() {
     this.router.navigate(["/tabs/crianca-perfil"]);
+  }
+
+  agendarVacina(vacina: Vacina) {
+    this.vacinaSelecionada = vacina;
+    this.dataAgendamento = vacina.dataPrevista ?? "";
+    this.localAgendamento = vacina.local ?? "";
+    this.modalAgendamentoAberto = true;
+  }
+
+  fecharModal() {
+    this.modalAgendamentoAberto = false;
+    this.vacinaSelecionada = undefined;
+  }
+
+  async salvarAgendamento() {
+    if (!this.vacinaSelecionada || !this.crianca) return;
+
+    const vacinaAtualizada: Vacina = {
+      ...this.vacinaSelecionada,
+      dataPrevista: this.dataAgendamento,
+      local: this.localAgendamento,
+    };
+
+    await this.criancaService.atualizarVacina(
+      this.crianca.id,
+      vacinaAtualizada,
+    );
+
+    this.fecharModal();
   }
 }

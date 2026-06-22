@@ -153,4 +153,8 @@ export class HomePage implements OnInit {
   irParaPerfil(id: string) {
     this.router.navigate(["/tabs/crianca-perfil-detalhe", id]);
   }
+
+  irParaAdicionar() {
+    this.router.navigate(["/tabs/adicionar-crianca"]);
+  }
 }
