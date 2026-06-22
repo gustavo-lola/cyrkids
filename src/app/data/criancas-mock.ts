@@ -14,7 +14,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "Dose única",
         faixaEtaria: "Ao Nascer",
         status: "realizada",
-        dataRealizacao: "12 Jan 2026",
+        dataRealizacao: "12 Jan 2023",
         local: "Hospital Materno",
       },
       {
@@ -24,7 +24,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "Dose única",
         faixaEtaria: "Ao Nascer",
         status: "realizada",
-        dataRealizacao: "12 Jan 2026",
+        dataRealizacao: "12 Jan 2023",
         local: "Hospital Materno",
       },
       {
@@ -34,7 +34,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "1ª dose",
         faixaEtaria: "2 Meses",
         status: "realizada",
-        dataRealizacao: "12 Mar 2026",
+        dataRealizacao: "12 Mar 2023",
         local: "UBS Jardim das Flores",
       },
       {
@@ -44,7 +44,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "3ª dose",
         faixaEtaria: "6 Meses",
         status: "pendente",
-        dataRealizacao: "15/06/2026",
+        dataPrevista: "2026-04-15",
         local: "UBS Jardim das Flores",
       },
     ],
@@ -62,7 +62,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "Dose única",
         faixaEtaria: "Ao Nascer",
         status: "realizada",
-        dataRealizacao: "12 Out 2026",
+        dataRealizacao: "12 Out 2023",
         local: "Hospital Materno",
       },
       {
@@ -72,7 +72,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "Dose única",
         faixaEtaria: "Ao Nascer",
         status: "realizada",
-        dataRealizacao: "12 Out 2026",
+        dataRealizacao: "12 Out 2023",
         local: "Hospital Materno",
       },
       {
@@ -82,7 +82,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "1ª dose",
         faixaEtaria: "2 Meses",
         status: "realizada",
-        dataRealizacao: "12 Dez 2026",
+        dataRealizacao: "12 Dez 2023",
         local: "UBS Centro",
       },
       {
@@ -92,7 +92,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "1ª dose",
         faixaEtaria: "2 Meses",
         status: "realizada",
-        dataRealizacao: "12 Dez 2026",
+        dataRealizacao: "12 Dez 2023",
         local: "UBS Centro",
       },
       {
@@ -102,6 +102,8 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "2ª dose",
         faixaEtaria: "4 Meses",
         status: "realizada",
+        dataRealizacao: "12 Fev 2024",
+        local: "UBS Centro",
       },
       {
         id: "v10",
@@ -110,6 +112,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "2ª dose",
         faixaEtaria: "4 Meses",
         status: "pendente",
+        dataPrevista: "2026-07-15",
       },
       {
         id: "v11",
@@ -118,6 +121,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "3ª dose",
         faixaEtaria: "6 Meses",
         status: "pendente",
+        dataPrevista: "2026-05-10",
       },
     ],
   },
@@ -134,6 +138,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "Dose única",
         faixaEtaria: "Ao Nascer",
         status: "pendente",
+        dataPrevista: "2026-03-01",
       },
       {
         id: "v13",
@@ -142,6 +147,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "1ª dose",
         faixaEtaria: "2 Meses",
         status: "pendente",
+        dataPrevista: "2026-05-01",
       },
       {
         id: "v14",
@@ -150,6 +156,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "1ª dose",
         faixaEtaria: "2 Meses",
         status: "pendente",
+        dataPrevista: "2026-05-01",
       },
       {
         id: "v15",
@@ -158,6 +165,7 @@ export const CRIANCAS_MOCK: Crianca[] = [
         dose: "2ª dose",
         faixaEtaria: "4 Meses",
         status: "pendente",
+        dataPrevista: "2026-07-01",
       },
     ],
   },

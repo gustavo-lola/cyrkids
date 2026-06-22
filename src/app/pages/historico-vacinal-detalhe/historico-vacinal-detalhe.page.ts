@@ -23,10 +23,12 @@ import {
   calendarOutline,
   locationOutline,
   optionsOutline,
+  alertCircleOutline,
 } from "ionicons/icons";
 import { CriancaService } from "../../services/crianca.service";
 import { Crianca } from "../../models/crianca.model";
 import { Vacina } from "../../models/vacina.model";
+import { statusComputado } from "../../utils/vacina.utils";
 
 interface GrupoFaixa {
   faixa: string;
@@ -74,6 +76,7 @@ export class HistoricoVacinalDetalhePage implements OnInit {
       calendarOutline,
       locationOutline,
       optionsOutline,
+      alertCircleOutline,
     });
   }
 
@@ -83,6 +86,10 @@ export class HistoricoVacinalDetalhePage implements OnInit {
       this.crianca = crianca;
       this.agruparPorFaixa();
     });
+  }
+
+  statusVacina(vacina: Vacina) {
+    return statusComputado(vacina);
   }
 
   agruparPorFaixa() {
@@ -116,14 +123,22 @@ export class HistoricoVacinalDetalhePage implements OnInit {
   contagemGrupo(grupo: GrupoFaixa): string {
     const total = grupo.vacinas.length;
     const realizadas = grupo.vacinas.filter(
-      (v) => v.status === "realizada",
+      (v) => statusComputado(v) === "realizada",
     ).length;
     return `${realizadas} de ${total} vacinas aplicadas`;
   }
 
   statusGrupo(grupo: GrupoFaixa): StatusGrupo {
-    if (grupo.vacinas.every((v) => v.status === "realizada")) return "completo";
-    if (grupo.vacinas.some((v) => v.status === "pendente")) return "proximo";
+    if (grupo.vacinas.every((v) => statusComputado(v) === "realizada"))
+      return "completo";
+    if (
+      grupo.vacinas.some(
+        (v) =>
+          statusComputado(v) === "pendente" ||
+          statusComputado(v) === "atrasada",
+      )
+    )
+      return "proximo";
     return "bloqueado";
   }
 
@@ -140,7 +155,8 @@ export class HistoricoVacinalDetalhePage implements OnInit {
 
   get totalRealizadas(): number {
     return (
-      this.crianca?.vacinas.filter((v) => v.status === "realizada").length ?? 0
+      this.crianca?.vacinas.filter((v) => statusComputado(v) === "realizada")
+        .length ?? 0
     );
   }
 
@@ -151,7 +167,9 @@ export class HistoricoVacinalDetalhePage implements OnInit {
   }
 
   get proximaVacina(): Vacina | undefined {
-    return this.crianca?.vacinas.find((v) => v.status === "pendente");
+    return this.crianca?.vacinas.find(
+      (v) => statusComputado(v) !== "realizada",
+    );
   }
 
   voltar() {
