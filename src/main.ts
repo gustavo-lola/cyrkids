@@ -13,7 +13,7 @@ import { provideFirebaseApp, initializeApp } from "@angular/fire/app";
 import { provideFirestore, getFirestore } from "@angular/fire/firestore";
 import { routes } from "./app/app.routes";
 import { AppComponent } from "./app/app.component";
-import { environment } from "./environments/environment";
+import { environment } from "./environments/environment.prod";
 
 bootstrapApplication(AppComponent, {
   providers: [
